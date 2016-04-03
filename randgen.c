@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:20:33 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/04/03 15:22:21 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/04/03 15:32:39 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,14 @@ int					main(int argc, char *argv[])
 			if (sz < 3)
 				return (usage(argv[0]));
 			cur = node_back(free_args, 2);
-			if (g_flags & FLAG_VERBOSE)
-				printf("Lower bound: %s\n", (char*)cur->data);
 			min = strtof((char*)cur->data, NULL);
 			cur = node_back(free_args, 3);
-			if (g_flags & FLAG_VERBOSE)
-				printf("Upper bound: %s\n", (char*)cur->data);
 			max = strtof((char*)cur->data, NULL);
+			if (max < min)
+			{
+				printf("error: lower(%.2f) > upper(%.2f) bound!\n", min, max);
+				return (1);
+			}
 		}
 	}
 	else if (sz < 1 || sz > 3 || ngen < 1)
@@ -116,7 +117,7 @@ int					main(int argc, char *argv[])
 	}
 	srand(time(NULL));
 	if (g_flags & FLAG_VERBOSE)
-		printf("Starting randgen v%s\n\tCreated by %s (aka %s)\n\n",
+		printf("Starting randgen v%s\n\tCreated by %s (aka %s)\n",
 			   VERSION_STRING, AUTHOR_NAME, AUTHOR_PSEUDO);
 	code = randgen(ngen, min, max);
 	node_delete_all(&free_args);

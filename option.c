@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 13:53:56 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/04/03 15:24:17 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/04/03 15:32:52 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int					usage(char const *app_name)
 	}
 	i = 0;
 	if (g_flags & FLAG_VERBOSE)
-		i = printf("Starting randgen v%s\n\tCreated by %s (aka %s)\n\n",
+		i = printf("Starting randgen v%s\n\tCreated by %s (aka %s)\n",
 				   VERSION_STRING, AUTHOR_NAME, AUTHOR_PSEUDO);
 	return ((i += printf(help_fmt, app_name, DFLT_GEN_COUNT, DFLT_GEN_MIN, DFLT_GEN_MAX, opts_fmt)));
 }

@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/03 12:33:39 by mwelsch           #+#    #+#              #
-#    Updated: 2016/04/03 14:49:48 by mwelsch          ###   ########.fr        #
+#    Updated: 2016/04/03 15:28:36 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -34,4 +34,7 @@ re: fclean $(NAME)
 
 all: $(NAME)
 
-.PHONY: clean fclean all re
+run: $(NAME)
+	./$(NAME)
+
+.PHONY: clean fclean all re run
